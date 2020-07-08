@@ -46,5 +46,16 @@ router.get('/itempage/:categoryId?',(req,res)=>{
             res.json(arr)
         })
 })
+//顯示商品詳細資訊
+router.get('/detail/:itemid?',(req,res)=>{
+    let itemid = req.params.itemid || ''
+
+   
+    const sql=`SELECT * FROM items WHERE itemId ='${itemid}' `
+    db.query(sql)
+        .then(([rows])=>{
+            res.json(rows);
+        })
+})
 
 module.exports = router;
